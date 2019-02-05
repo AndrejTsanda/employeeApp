@@ -27,8 +27,4 @@
 
     <bean id="queryManager" class="com.tsanda.employeeApp.util.QueryManager"/>
 
-    <bean id="employeeDAO" class="com.tsanda.employeeApp.dao.EmployeeDAO"/>
-
-    <bean id="employeeService" class="com.tsanda.employeeApp.service.EmployeeService"/>
-
 </beans>

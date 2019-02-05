@@ -4,6 +4,7 @@ import com.tsanda.employeeApp.domain.Employee;
 import com.tsanda.employeeApp.service.EmployeeService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,6 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    @ResponseBody
     public List<Employee> getAllEmployees() {
         try {
             return this.employeeService.getAll();
@@ -28,7 +28,6 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
-    @ResponseBody
     public void saveEmployee(@RequestBody Employee employee) {
         try {
             this.employeeService.saveEmployee(employee);
@@ -38,7 +37,6 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.DELETE)
-    @ResponseBody
     public void deleteEmployee(@RequestBody Integer id) {
         try {
             this.employeeService.deleteEmployee(id);
@@ -48,7 +46,6 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.PUT)
-    @ResponseBody
     public void updateEmployee(@RequestBody Employee employee) {
         try {
             this.employeeService.updateEmployee(employee);
@@ -58,7 +55,6 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public Employee getEmployeeById(@PathVariable("id") Integer id) {
         try {
             return this.employeeService.getEmployeeById(id);
