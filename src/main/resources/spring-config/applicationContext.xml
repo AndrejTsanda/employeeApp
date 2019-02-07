@@ -24,7 +24,6 @@
 
     <context:component-scan base-package="com.tsanda.employeeApp.dao"/>
     <context:component-scan base-package="com.tsanda.employeeApp.service"/>
-
-    <bean id="queryManager" class="com.tsanda.employeeApp.util.QueryManager"/>
+    <context:component-scan base-package="com.tsanda.employeeApp.util"/>
 
 </beans>
