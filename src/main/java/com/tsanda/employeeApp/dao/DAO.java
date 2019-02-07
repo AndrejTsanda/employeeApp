@@ -8,7 +8,7 @@ public interface DAO <Domain, Key> {
 
     public void save(final Domain domain) throws DatabaseException;
     public void delete(final Key key) throws DatabaseException;
-    public void update(final Domain domain) throws DatabaseException;
+    public void update(final Domain domain, final Key key) throws DatabaseException;
     public Domain getById(final Key key) throws DatabaseException;
     public List<Domain> getAll() throws DatabaseException;
 }

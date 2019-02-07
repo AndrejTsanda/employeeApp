@@ -65,7 +65,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
     }
 
     @Override
-    public void update(final Employee employee) throws DatabaseException {
+    public void update(final Employee employee, final Integer id) throws DatabaseException {
         if (employee == null) {
             throw new NullDomainException("Employee domain is null!");
         }
@@ -78,7 +78,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
                     employee.getJob_title(),
                     employee.getGender(),
                     employee.getDate_of_birth(),
-                    employee.getId()
+                    id
             });
         } catch (Exception e) {
             log.error(e);

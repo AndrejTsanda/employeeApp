@@ -36,28 +36,28 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value = "/employee", method = RequestMethod.DELETE)
-    public void deleteEmployee(@RequestBody Integer id) {
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.DELETE)
+    public void deleteEmployee(@PathVariable("id") String id) {
         try {
-            this.employeeService.deleteEmployee(id);
+            this.employeeService.deleteEmployee(Integer.parseInt(id));
         } catch (Exception e) {
             log.error(e);
         }
     }
 
-    @RequestMapping(value = "/employee", method = RequestMethod.PUT)
-    public void updateEmployee(@RequestBody Employee employee) {
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.PUT)
+    public void updateEmployee(@RequestBody Employee employee, @PathVariable("id") String id) {
         try {
-            this.employeeService.updateEmployee(employee);
+            this.employeeService.updateEmployee(employee, Integer.parseInt(id));
         } catch (Exception e) {
             log.error(e);
         }
     }
 
     @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
-    public Employee getEmployeeById(@PathVariable("id") Integer id) {
+    public Employee getEmployeeById(@PathVariable("id") String id) {
         try {
-            return this.employeeService.getEmployeeById(id);
+            return this.employeeService.getEmployeeById(Integer.parseInt(id));
         } catch (Exception e) {
             log.error(e);
             return null;

@@ -47,13 +47,13 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void updateEmployee(Employee employee) {
+    public void updateEmployee(Employee employee, Integer id) {
         if (employee == null) {
             throw new NullDomainException("Custom employee for updating info into database is NULL!");
         }
 
         try {
-            employeeDAO.update(employee);
+            employeeDAO.update(employee, id);
         } catch (Exception e) {
             log.error(e);
         }
