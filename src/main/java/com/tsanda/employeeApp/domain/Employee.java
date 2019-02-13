@@ -1,5 +1,7 @@
 package com.tsanda.employeeApp.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -9,24 +11,31 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "Id of employee", name = "id")
     @Column(name = "employee_id")
     private Integer id;
 
+    @ApiModelProperty(notes = "First name", name = "first_name", required = true)
     @Column(name = "first_name")
     private String first_name;
 
+    @ApiModelProperty(notes = "Last name", name = "last_name", required = true)
     @Column(name = "last_name")
     private String last_name;
 
+    @ApiModelProperty(notes = "Id of department from department's table", name = "department_id")
     @Column(name = "department_id")
     private Integer department_id;
 
+    @ApiModelProperty(notes = "Job title", name = "job_title")
     @Column(name = "job_title")
     private String job_title;
 
+    @ApiModelProperty(notes = "Gender", name = "gender", allowableValues = "MALE,FEMALE")
     @Column(name = "gender")
     private String gender;
 
+    @ApiModelProperty(notes = "Date of birth", name = "date_of_birth")
     @Column(name = "date_of_birth")
     private Date date_of_birth;
 
