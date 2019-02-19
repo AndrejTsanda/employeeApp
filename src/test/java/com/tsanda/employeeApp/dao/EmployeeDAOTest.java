@@ -1,6 +1,7 @@
 package com.tsanda.employeeApp.dao;
 
 import com.tsanda.employeeApp.domain.Employee;
+import com.tsanda.employeeApp.domain.Gender;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class EmployeeDAOTest {
         employeeTest.setFirst_name("Mariya");
         employeeTest.setLast_name("Nesterova");
         employeeTest.setDepartment_id(2);
-        employeeTest.setGender("Female");
+        employeeTest.setGender(Gender.FEMALE);
         employeeTest.setJob_title("Accountant");
         employeeTest.setDate_of_birth(Date.valueOf("1997-04-14"));
 
@@ -94,6 +95,7 @@ public class EmployeeDAOTest {
 
         employee.setFirst_name("Andrej");
         employee.setLast_name("Tsanda");
+        employee.setGender(Gender.MALE);
 
         List<Employee> employeeList = employeeDAO.getAll();
         count = employeeList.size();
@@ -162,6 +164,7 @@ public class EmployeeDAOTest {
 
         employee.setFirst_name("Andrej");
         employee.setLast_name("Tsanda");
+        employee.setGender(Gender.MALE);
         List<Employee> employeeList = employeeDAO.getAll();
 
         Assert.assertNotNull(employee);
