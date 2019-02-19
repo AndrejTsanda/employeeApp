@@ -5,10 +5,10 @@ import com.tsanda.employeeApp.exception.DatabaseException;
 import com.tsanda.employeeApp.exception.ErrorQueryException;
 import com.tsanda.employeeApp.exception.NullDomainException;
 import com.tsanda.employeeApp.exception.NullKeyException;
+import com.tsanda.employeeApp.mapper.EmployeeMapper;
 import com.tsanda.employeeApp.util.QueryManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +41,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
                     employee.getLast_name(),
                     employee.getDepartment_id(),
                     employee.getJob_title(),
-                    employee.getGender(),
+                    employee.getGender().getValue(),
                     employee.getDate_of_birth()
             });
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
                     employee.getLast_name(),
                     employee.getDepartment_id(),
                     employee.getJob_title(),
-                    employee.getGender(),
+                    employee.getGender().getValue(),
                     employee.getDate_of_birth(),
                     id
             });
@@ -94,7 +94,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
 
         Employee employee;
         try {
-            employee = this.jdbcTemplate.queryForObject(queryManager.getQuery("employee.get.id"), new Object[] {id}, new BeanPropertyRowMapper<Employee>(Employee.class));
+            employee = (Employee)this.jdbcTemplate.queryForObject(queryManager.getQuery("employee.get.id"), new Object[] {id}, new EmployeeMapper());
             return employee;
         } catch (Exception e) {
             log.error(e);
@@ -105,7 +105,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
     @Override
     public List<Employee> getAll() throws DatabaseException {
         try{
-            return this.jdbcTemplate.query(queryManager.getQuery("employee.getAll"), new BeanPropertyRowMapper<Employee>(Employee.class));
+            return this.jdbcTemplate.query(queryManager.getQuery("employee.getAll"), new EmployeeMapper());
         } catch (Exception e) {
             log.error("Failed to execute the request for getting all employee from database!");
             return Collections.<Employee>emptyList();

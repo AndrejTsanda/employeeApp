@@ -33,7 +33,7 @@ public class Employee {
 
     @ApiModelProperty(notes = "Gender", name = "gender", allowableValues = "MALE,FEMALE")
     @Column(name = "gender")
-    private String gender;
+    private Gender gender;
 
     @ApiModelProperty(notes = "Date of birth", name = "date_of_birth")
     @Column(name = "date_of_birth")
@@ -74,10 +74,10 @@ public class Employee {
         this.job_title = job_title;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

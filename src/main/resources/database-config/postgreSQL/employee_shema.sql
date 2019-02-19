@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS employeedb.employee
     last_name VARCHAR(100) NOT NULL,
     department_id INTEGER,
     job_title VARCHAR(64),
-    gender VARCHAR(10),
+    gender INT,
     date_of_birth DATE
 );
